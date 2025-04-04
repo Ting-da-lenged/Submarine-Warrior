@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>海底战士：多界面版</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- 主界面 -->
+  <div id="main-screen" class="screen">
+    <h2>🐟 主界面</h2>
+    <div class="equipment-panel">
+      <h4>🧰 已装备</h4>
+      <div class="equipment-slot">🪖 头部：<span id="equip-头">无</span></div>
+      <div class="equipment-slot">🎽 背鳍：<span id="equip-背">无</span></div>
+      <div class="equipment-slot">🩲 腹部：<span id="equip-腹">无</span></div>
+      <div class="equipment-slot">🧤 左鳍：<span id="equip-鳍">无</span></div>
+      <div class="equipment-slot">🫁 鳃部：<span id="equip-鳃">无</span></div>
+      <div class="equipment-slot">🦈 尾巴：<span id="equip-尾">无</span></div>
+    </div>
+    <div class="stats-container">
+      <div class="level-exp">
+        <div>等级: <span id="level">5</span> | EXP: <span id="exp">60</span>/<span id="exp-max">100</span></div>
+        <div class="exp-bar-container">
+          <div class="exp-bar" id="exp-bar"></div>
+        </div>
+      </div>     
+      <div class="attr-grid">
+        <div class="attr-item">❤️ 生命值: <span id="hp">100</span></div>
+        <div class="attr-item">🗡️ 攻击力: <span id="atk">20</span></div>
+        <div class="attr-item">🛡️ 防御: <span id="def">15</span></div>
+        <div class="attr-item">⚡ 速度: <span id="spd">8</span></div>
+
+        <button id="toggle-extra-attr-btn" class="toggle-extra">▶ 展开额外属性</button>
+        <!-- 可折叠额外属性区 -->
+        <div id="extra-attributes" class="extra-attr hidden">
+          <div class="attr-item">🎯 命中率: <span id="acc">0%</span></div>
+          <div class="attr-item">🌀 闪避率: <span id="eva">0%</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="action-row">
+      <button id="challenge-btn" class="challenge-btn">挑战 ⚔️</button>
+      <button id="toggle-inventory-btn" class="inventory-btn">背包 🎒</button>
+      <button id="open-craft-btn" class="craft-btn">合成 🛠️</button>
+
+    </div>
+  </div>
+
+<!-- 战斗悬浮窗口 -->
+<div id="battle-overlay" class="overlay">
+  <div class="popup">
+    <h3>⚔️ 战斗界面</h3>
+    <div class="battle-stats">
+      <div>玩家 ❤️ <span id="player-hp">100</span></div>
+      <div>🐙 章鱼怪 ❤️ <span id="enemy-hp">80</span></div>
+    </div>
+    <div class="battle-log" id="battle-log"></div>
+    <div id="skill-buttons" class="skill-bar"></div>
+    <button id="close-battle-btn" class="close-btn">关闭</button>
+  </div>
+</div>
+
+<!-- 背包悬浮窗口 -->
+<div id="inventory-overlay" class="overlay">
+  <div class="popup">
+    <h3>🎒 背包</h3>
+    <div id="inventory-grid" class="inventory-grid"></div>
+    <button id="close-inventory-btn" class="close-btn">关闭</button>
+  </div>
+</div>
+
+<!-- 合成悬浮窗口 -->
+<div id="craft-overlay" class="overlay">
+  <div class="popup">
+    <h3>🛠️ 合成界面</h3>
+    <div id="craft-content"></div>
+    <button id="close-craft-btn" class="close-btn">关闭</button>
+  </div>
+</div>
+
+<!-- 选择怪物悬浮窗 -->
+<div id="monster-select-overlay" class="overlay">
+  <div class="popup">
+    <h3>选择要挑战的怪物</h3>
+    <div class="monster-choice-list">
+      <button onclick="startBattle('章鱼')">🧠 章鱼怪</button>
+      <button onclick="startBattle('电刺虾')">⚡ 电刺虾</button>
+      <button onclick="startBattle('深渊魔魇鱼')">👹 深渊魔魇鱼</button>
+    </div>
+    <button class="close-btn" onclick="closeOverlay('monster-select')">❌ 取消</button>
+  </div>
+</div>
+
+<!-- 合成等级选择弹窗 -->
+<div id="craft-select-overlay" class="overlay">
+  <div class="popup">
+    <h3 id="craft-select-title">选择材料等级</h3>
+    <div id="craft-select-content" class="craft-grade-list"></div>
+    <button class="close-btn" onclick="closeOverlay('craft-select')">❌ 取消</button>
+  </div>
+</div>
+
+
+
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
